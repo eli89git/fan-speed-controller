@@ -55,19 +55,10 @@ void loop() {
       int transitionTime = speedStep == 0 ? stoppingDeltaT : deltaT;
       float increment = float((targetSpeed - currentSpeed)) / float((transitionTime / 10)); // Calculate the increment for each step
       
-      Serial.print("Increment: "); // print button state to serial port
-      Serial.println(increment);
-      Serial.print("currentSpeed: "); // print button state to serial port
-      Serial.println(currentSpeed);
-      Serial.print("targetSpeed: "); // print button state to serial port
-      Serial.println(targetSpeed);
-      
       // Gradually change the speed to the target speed
       for(float i = currentSpeed; i != targetSpeed; i += increment) {
         esc.writeMicroseconds(i); // set the speed of the motor
         delay(10); // delay 10ms for each step to achieve deltaT or stoppingDeltaT in total
-        Serial.print("i"); // print button state to serial port
-        Serial.println(i);
       }
       
       currentSpeed = targetSpeed; // update current speed
@@ -76,11 +67,6 @@ void loop() {
       digitalWrite(ledPin1, speedStep > 0 ? HIGH : LOW);
       digitalWrite(ledPin2, speedStep > 1 ? HIGH : LOW);
       digitalWrite(ledPin3, speedStep > 2 ? HIGH : LOW);
-
-      Serial.print("Button state: "); // print button state to serial port
-      Serial.println(buttonState);
-      Serial.print("Speed: "); // print speed to serial port
-      Serial.println(currentSpeed);
     }
     delay(50); // debounce delay; increase if the output flickers
   }
