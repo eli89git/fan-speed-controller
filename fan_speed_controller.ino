@@ -14,7 +14,7 @@ int ledPin2 = 4;
 int ledPin3 = 5;
 
 // Define an array that holds the speeds for each step
-int speeds[] = {1000, 1500, 1600, 1700};
+int speeds[] = {1000, 1550, 1600, 1650};
 int numSpeeds = sizeof(speeds) / sizeof(int); // Calculate the number of speeds
 
 // Define the time it should take to transition to the next speed (in milliseconds)
